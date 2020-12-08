@@ -1,3 +1,15 @@
+## React Component Hierarchy
+gallery component
+    - Name
+    - Birth Year
+    - Height
+    - Mass
+button component - back
+button component - next
+gallery detail component
+    button component - back
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
