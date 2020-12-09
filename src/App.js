@@ -29,6 +29,9 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/page/:pageId">
+              <Page />
+            </Route>
             <Route path="/character/:characterId">
               <Character />
             </Route>
@@ -45,7 +48,7 @@ function App() {
 function Home() {
   return (
     <div className="App">
-      <Characters />
+      <Characters/>
     </div>
   );
 }
@@ -56,6 +59,16 @@ function Character() {
   return (
     <div className="App">
       <h3>{characterId}</h3>
+    </div>
+  );
+}
+
+function Page() {
+  let { pageId } = useParams();
+
+  return (
+    <div className="App">
+      <Characters page={pageId} />
     </div>
   );
 }

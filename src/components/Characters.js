@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; // connect components to redux store
 import { fetchCharacters } from '../actions/characterActions';
+import Button from './Button';
 
 class Characters extends Component {
     componentWillMount() {
-        this.props.fetchCharacters();
+        //console.log(this.props.page);
+        this.props.fetchCharacters(this.props.page);
     }
 
     render() {
@@ -20,9 +22,13 @@ class Characters extends Component {
             </a>
         ));
         
+        const previousPageURL = this.props.previousPageURL;
+        const nextPageURL = this.props.nextPageURL;
         return (
             <div>
                 <h1>Characters</h1>
+                <Button name="previous" key="previous" url={previousPageURL} />
+                <Button name="next" key="next" url={nextPageURL} />
                 <ul className="character-list">
                     {getCharacters}
                 </ul>
@@ -32,7 +38,10 @@ class Characters extends Component {
 }
 
 const mapStateToProps = state => ({
-    charactersProps: state.characters.characterItems    // characters is from the rootReducer in reducers/index.js and characterItems is from the initialState in reducers/characterReducer.js
+    charactersProps: state.characterReducer.characterItems,    // characters is from the rootReducer in reducers/index.js and characterItems is from the initialState in reducers/characterReducer.js
+    currentPage: state.characterReducer.currentPage,
+    nextPageURL: state.characterReducer.nextPageURL,
+    previousPageURL: state.characterReducer.previousPageURL
 });
 
 export default connect(mapStateToProps, { fetchCharacters })(Characters);
