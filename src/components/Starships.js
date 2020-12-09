@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class starships extends Component {
+export default class Starships extends Component {
     componentWillMount() {
         fetch('https://cors-anywhere.herokuapp.com/https://swapi.dev/api/starships') // the cors link helps to run cross origin resource sharing
         .then(res => res.json())
