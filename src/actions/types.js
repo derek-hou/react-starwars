@@ -1,3 +1,2 @@
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
-export const NEXT_PAGE = 'NEXT_PAGE';
-export const PREVIOUS_PAGE = 'PREVIOUS_PAGE';
+export const FETCH_CHARACTER = 'FETCH_CHARACTER';

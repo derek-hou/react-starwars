@@ -5,30 +5,32 @@ import Button from './Button';
 
 class Characters extends Component {
     componentWillMount() {
-        //console.log(this.props.page);
         this.props.fetchCharacters(this.props.page);
     }
 
     render() {
         //console.log(this.props.charactersProps);
-        const getCharacters = this.props.charactersProps.map((character, index) => (
-            <a href={`/character/` + (parseInt(index)+1)}>
-                <li className="characterTraits" key={index}>
-                    <span>{character.name}</span>
-                    <span>{character.birth_year}</span>
-                    <span>{character.height}</span>
-                    <span>{character.mass}</span>
-                </li>
-            </a>
-        ));
-        
+        const getCharacters = this.props.charactersProps.map((character, index) => {
+            const characterIdArr = character.url.split('/');
+            const characterId = characterIdArr[characterIdArr.length-2]; 
+
+            return (<a href={`/page/` + this.props.page + `/character/` + characterId}>
+                    <li className="characterTraits" key={index}>
+                        <span>{character.name}</span>
+                        <span>{character.birth_year}</span>
+                        <span>{character.height}</span>
+                        <span>{character.mass}</span>
+                    </li>
+                </a>)
+        });
+        //console.log(getCharacters);
         const previousPageURL = this.props.previousPageURL;
         const nextPageURL = this.props.nextPageURL;
         return (
             <div>
                 <h1>Characters</h1>
-                <Button name="previous" key="previous" url={previousPageURL} />
-                <Button name="next" key="next" url={nextPageURL} />
+                <Button name="previous" key="previous" page={this.props.page} url={previousPageURL} />
+                <Button name="next" key="next" page={this.props.page} url={nextPageURL} />
                 <ul className="character-list">
                     {getCharacters}
                 </ul>
