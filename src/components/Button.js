@@ -4,8 +4,8 @@ export default function Button({name, page, url}) { // the properties in the but
     const urlStr = url == null ? '#' : url;
 
     return (
-        <div>
-            <a href={urlStr}>{name}</a>
-        </div>
+        <>
+            <a className="btn" href={urlStr}>{name}</a>
+        </>
     )
 }

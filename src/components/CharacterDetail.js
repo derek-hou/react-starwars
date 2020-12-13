@@ -4,7 +4,7 @@ import { fetchCharacter } from '../actions/characterActions';
 import Button from './Button';
 
 class CharacterDetail extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchCharacter(this.props.characterId);
     }
 
@@ -19,7 +19,7 @@ class CharacterDetail extends Component {
                 <p>Hair Colour: {this.props.characterProp.hair_color}</p>
                 <p>Height: {this.props.characterProp.height}</p>
                 <p>Mass: {this.props.characterProp.mass}</p>
-                <p>Skin COlour: {this.props.characterProp.skin_color}</p>
+                <p>Skin Colour: {this.props.characterProp.skin_color}</p>
             </div>
         )
     }
@@ -28,7 +28,6 @@ class CharacterDetail extends Component {
 const mapStateToProps = state => ({
     // character is from the rootReducer in reducers/index.js and characterItem is from the initialState in reducers/characterReducer.js
     characterProp: state.characterReducer.characterItem,
-    currentPage: state.characterReducer.currentPage
 });
 
 export default connect(mapStateToProps, { fetchCharacter })(CharacterDetail);
